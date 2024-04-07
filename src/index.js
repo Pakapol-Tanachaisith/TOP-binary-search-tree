@@ -7,7 +7,9 @@ const bst = new Tree(EXAMPLE);
 
 // bst.insert(150);
 // bst.insert(6);
-// prettyPrint(bst.root);
+prettyPrint(bst.root);
 
 // bst.delete(6);
 // prettyPrint(bst.root);
+
+console.log(bst.find(324));

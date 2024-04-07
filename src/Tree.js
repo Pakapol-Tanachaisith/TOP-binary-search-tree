@@ -131,6 +131,15 @@ class Tree {
     const nextRoot = value < root.data ? root?.left : root?.right;
     this.delete(value, nextRoot);
   }
+
+  find(value, root = this.root) {
+    if (!root) return null;
+
+    if (value === root.data) return root;
+
+    const nextRoot = value < root.data ? root.left : root.right;
+    return this.find(value, nextRoot);
+  }
 }
 
 export default Tree;
