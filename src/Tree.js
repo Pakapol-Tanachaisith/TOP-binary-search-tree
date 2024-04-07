@@ -140,6 +140,23 @@ class Tree {
     const nextRoot = value < root.data ? root.left : root.right;
     return this.find(value, nextRoot);
   }
+
+  levelOrder(callBack = (node) => {}) {
+    const queue = [this.root];
+    const dataArr = [];
+
+    while (queue.length) {
+      const currentNode = queue[0];
+
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+
+      dataArr.push(currentNode.data);
+      queue.shift();
+    }
+
+    dataArr.forEach(callBack);
+  }
 }
 
 export default Tree;

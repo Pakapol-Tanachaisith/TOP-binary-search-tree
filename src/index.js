@@ -12,4 +12,8 @@ prettyPrint(bst.root);
 // bst.delete(6);
 // prettyPrint(bst.root);
 
-console.log(bst.find(324));
+// console.log(bst.find(324));
+
+// bst.levelOrder((node) => {
+//   console.log(node);
+// });
