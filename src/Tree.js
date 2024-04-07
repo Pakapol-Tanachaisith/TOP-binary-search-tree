@@ -141,9 +141,11 @@ class Tree {
     return this.find(value, nextRoot);
   }
 
-  levelOrder(callBack = (node) => {}) {
+  levelOrder(callBack = (node) => {}, root = this.root) {
+    if (!root) return;
+
     const queue = [this.root];
-    const dataArr = [];
+    const nodes = [];
 
     while (queue.length) {
       const currentNode = queue[0];
@@ -151,11 +153,35 @@ class Tree {
       if (currentNode.left) queue.push(currentNode.left);
       if (currentNode.right) queue.push(currentNode.right);
 
-      dataArr.push(currentNode.data);
+      nodes.push(currentNode.data);
       queue.shift();
     }
 
-    dataArr.forEach(callBack);
+    nodes.forEach(callBack);
+  }
+
+  preOrder(callback = (node) => {}, root = this.root) {
+    if (!root) return;
+
+    callback(root);
+    this.preOrder(callback, root.left);
+    this.preOrder(callback, root.right);
+  }
+
+  inOrder(callback = (node) => {}, root = this.root) {
+    if (!root) return;
+
+    this.inOrder(callback, root.left);
+    callback(root);
+    this.inOrder(callback, root.right);
+  }
+
+  postOrder(callback = (node) => {}, root = this.root) {
+    if (!root) return;
+
+    this.postOrder(callback, root.left);
+    this.postOrder(callback, root.right);
+    callback(root);
   }
 }
 

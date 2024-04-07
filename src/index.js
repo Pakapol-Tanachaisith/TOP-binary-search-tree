@@ -17,3 +17,15 @@ prettyPrint(bst.root);
 // bst.levelOrder((node) => {
 //   console.log(node);
 // });
+
+// bst.preOrder((node) => {
+//   console.log(node.data);
+// });
+
+// bst.inOrder((node) => {
+//   console.log(node.data);
+// });
+
+// bst.postOrder((node) => {
+//   console.log(node.data);
+// });
