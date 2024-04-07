@@ -1,18 +1,13 @@
-import "./style.css";
-import Webpack from "./assets/images/webpack-logo.png";
+import Tree from "./Tree";
+import { prettyPrint } from "./utils";
 
-const container = document.querySelector("main");
+const EXAMPLE = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 
-const div = document.createElement("div");
-div.className = "container";
+const bst = new Tree(EXAMPLE);
 
-const img = document.createElement("img");
-img.className = "logo";
-img.src = Webpack;
+// bst.insert(150);
+// bst.insert(6);
+// prettyPrint(bst.root);
 
-const p = document.createElement("p");
-p.textContent = "Simple Webpack Template";
-
-div.append(img, p);
-
-container.appendChild(div);
+// bst.delete(6);
+// prettyPrint(bst.root);
