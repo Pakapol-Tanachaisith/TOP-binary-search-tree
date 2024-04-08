@@ -10,3 +10,8 @@ export const prettyPrint = (node, prefix = "", isLeft = true) => {
     prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
 };
+
+// 0 -> 0.99
+export function ranNum() {
+  return Math.floor(Math.random() * 100) + 1;
+}

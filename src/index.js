@@ -1,12 +1,24 @@
 import Tree from "./Tree";
-import { prettyPrint } from "./utils";
+import { prettyPrint, ranNum } from "./utils";
 
-const EXAMPLE = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+const example = [];
 
-const bst = new Tree(EXAMPLE);
-bst.insert(18);
-bst.insert(19);
+for (let i = 1; i <= 25; i++) {
+  example.push(ranNum());
+}
+
+const bst = new Tree(example);
 prettyPrint(bst.root);
+
+console.log("Is Balanced: ", bst.isBalanced());
+bst.insert(120);
+bst.insert(150);
+bst.insert(160);
+bst.insert(170);
+bst.insert(180);
+prettyPrint(bst.root);
+console.log("Is Balanced: ", bst.isBalanced());
 
 bst.rebalance();
 prettyPrint(bst.root);
+console.log("Is Balanced: ", bst.isBalanced());
