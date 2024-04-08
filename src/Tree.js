@@ -234,13 +234,23 @@ class Tree {
     const leftHeight = this.height(this.root.left);
     const rightHeight = this.height(this.root.right);
 
-    console.log({ leftHeight, rightHeight });
-
     if (leftHeight === rightHeight) return true;
     if (leftHeight === rightHeight + 1) return true;
     if (leftHeight === rightHeight - 1) return true;
 
     return false;
+  }
+
+  rebalance() {
+    const isBalanced = this.isBalanced();
+    if (isBalanced) return;
+
+    const values = [];
+    this.inOrder((node) => {
+      values.push(node.data);
+    });
+
+    this.root = buildTree(cleanArray(values), 0, values.length - 1);
   }
 }
 
