@@ -229,6 +229,19 @@ class Tree {
 
     return deepestLeafDepth - targetNodeDepth;
   }
+
+  isBalanced() {
+    const leftHeight = this.height(this.root.left);
+    const rightHeight = this.height(this.root.right);
+
+    console.log({ leftHeight, rightHeight });
+
+    if (leftHeight === rightHeight) return true;
+    if (leftHeight === rightHeight + 1) return true;
+    if (leftHeight === rightHeight - 1) return true;
+
+    return false;
+  }
 }
 
 export default Tree;
