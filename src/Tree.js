@@ -184,11 +184,24 @@ class Tree {
     callback(root);
   }
 
-  depth(node) {
+  #getLeaf(root = this.root) {
+    const leafs = [];
+
+    this.inOrder((item) => {
+      const nodeType = this.#checkNodeType(item);
+      if (nodeType === this.#NODE_TYPE.LEAF) {
+        leafs.push(item);
+      }
+    }, root);
+
+    return leafs;
+  }
+
+  depth(node, root = this.root) {
     if (!node) return -1;
 
     let result = 0;
-    let currentNode = this.root;
+    let currentNode = root;
 
     while (currentNode) {
       if (currentNode === node) return result;
@@ -201,6 +214,20 @@ class Tree {
     }
 
     return result;
+  }
+
+  height(node) {
+    if (!node) return -1;
+
+    const leafs = this.#getLeaf(node);
+    const deepestLeafDepth = leafs.reduce((acc, leaf) => {
+      const leafDepth = this.depth(leaf);
+      return leafDepth > acc ? leafDepth : acc;
+    }, 0);
+
+    const targetNodeDepth = this.depth(node);
+
+    return deepestLeafDepth - targetNodeDepth;
   }
 }
 
