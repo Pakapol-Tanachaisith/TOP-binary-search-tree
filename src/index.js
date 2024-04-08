@@ -29,3 +29,4 @@ prettyPrint(bst.root);
 // bst.postOrder((node) => {
 //   console.log(node.data);
 // });
+console.log(bst.depth(7));

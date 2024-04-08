@@ -183,6 +183,31 @@ class Tree {
     this.postOrder(callback, root.right);
     callback(root);
   }
+
+  depth(value) {
+    if (!this.root) return -1;
+
+    let depth = 0;
+    let currentNode = this.root;
+
+    while (currentNode) {
+      if (currentNode.data === value) {
+        depth += 1;
+        break;
+      } else {
+        const nodeType = this.#checkNodeType(currentNode);
+        if (nodeType === this.#NODE_TYPE.LEAF) return -1;
+
+        const nextNode =
+          value < currentNode.data ? currentNode.left : currentNode.right;
+
+        depth += 1;
+        currentNode = nextNode;
+      }
+    }
+
+    return depth;
+  }
 }
 
 export default Tree;
